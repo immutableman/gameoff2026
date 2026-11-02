@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://chetsit2nsboh"]
+
+[ext_resource type="PackedScene" uid="uid://c2f7or57sbcfm" path="res://player/player.tscn" id="1_gojnm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rm8kn"]
+size = Vector3(4.5876465, 1, 5.2268066)
+
+[node name="Level" type="Node3D" unique_id=1737760126]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=471288439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02486825, -1.2415388, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=526857124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.02486825, 0.59591985, 0)
+shape = SubResource("BoxShape3D_rm8kn")
+
+[node name="Player" parent="." unique_id=1012691893 instance=ExtResource("1_gojnm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13898277, 0.3171003, 0.0048359632)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1571387101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51891756, 1.074117, 4.0109215)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2070709391]
+transform = Transform3D(1, 0, 0, 0, 0.74332833, 0.6689268, 0, -0.6689268, 0.74332833, 0, 2.2672102, 3.2405815)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1250105680]
+transform = Transform3D(4.617257, 0, 0, 0, 0.50105107, 0, 0, 0, 5.4014053, 0, -1.0050673, 0)

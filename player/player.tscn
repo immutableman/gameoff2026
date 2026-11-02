@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c2f7or57sbcfm"]
+
+[ext_resource type="Script" uid="uid://c6h8d1jxs6a4h" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://dg3mbqwjr8j2m" path="res://player/player_physics.gd" id="2_rkbax"]
+[ext_resource type="ArrayMesh" uid="uid://bgwdehu6fsd7y" path="res://art/ball.res" id="3_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://ckxs3fsktcc1o" path="res://icon.svg" id="4_yw30f"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_x2dom"]
+rough = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rm8kn"]
+
+[node name="Player" type="Node3D" unique_id=1437075652 node_paths=PackedStringArray("left_hand", "right_hand")]
+script = ExtResource("1_oul6g")
+left_hand = NodePath("CameraArm/LeftHand")
+right_hand = NodePath("CameraArm/RightHand")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=730653487 node_paths=PackedStringArray("camera", "left_hand", "right_hand")]
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_x2dom")
+angular_damp = 1.0
+script = ExtResource("2_rkbax")
+camera = NodePath("../CameraArm/Camera3D")
+left_hand = NodePath("../CameraArm/LeftHand")
+right_hand = NodePath("../CameraArm/RightHand")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1608418365]
+shape = SubResource("SphereShape3D_rm8kn")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1549103435]
+transform = Transform3D(0.12329754, 0, 0, 0, 0.12329754, 0, 0, 0, 0.12329754, 0, 0, 0)
+mesh = ExtResource("3_g1dw6")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="RigidBody3D" unique_id=249040604]
+remote_path = NodePath("../../CameraArm")
+update_rotation = false
+update_scale = false
+
+[node name="CameraArm" type="Node3D" parent="." unique_id=944613804]
+
+[node name="Camera3D" type="Camera3D" parent="CameraArm" unique_id=2003789399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.074, 4.011)
+current = true
+
+[node name="LeftHand" type="Node3D" parent="CameraArm" unique_id=12243747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="LeftForce" type="Sprite3D" parent="CameraArm/LeftHand" unique_id=2050260838]
+transform = Transform3D(0.3326199, 0, 0, 0, 0.3326199, 0, 0, 0, 0.3326199, 0, 0, 0)
+texture = ExtResource("4_yw30f")
+
+[node name="RightHand" type="Node3D" parent="CameraArm" unique_id=791744020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="RightForce" type="Sprite3D" parent="CameraArm/RightHand" unique_id=459401317]
+transform = Transform3D(0.33940244, 0, 0, 0, 0.33940244, 0, 0, 0, 0.33940244, 0, 0, 0)
+texture = ExtResource("4_yw30f")

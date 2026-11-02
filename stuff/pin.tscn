@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://comx0lat5kkya"]
+
+[ext_resource type="ArrayMesh" uid="uid://ccshxfmo68ykh" path="res://art/pin.res" id="1_nu0ug"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nu0ug"]
+height = 16.02441
+radius = 1.8510742
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vcuup"]
+radius = 2.1654053
+height = 4.3308105
+
+[node name="Pin" type="Node3D" unique_id=1818254479]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=2050284345]
+mass = 0.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=57985845]
+transform = Transform3D(0.14154758, 0, 0, 0, -6.187241e-09, -0.14154758, 0, 0.14154758, -6.187241e-09, 0.83914304, -0.97610784, 0)
+mesh = ExtResource("1_nu0ug")
+
+[node name="Base" type="CollisionShape3D" parent="RigidBody3D" unique_id=1950657599]
+transform = Transform3D(0.14154758, 0, 0, 0, 0.14154758, 0, 0, 0, 0.14154758, -0.010142446, 0.15800032, 2.575573e-07)
+shape = SubResource("CylinderShape3D_nu0ug")
+
+[node name="Mid" type="CollisionShape3D" parent="RigidBody3D" unique_id=465885773]
+transform = Transform3D(0.14154758, 0, 0, 0, 0.14154758, 0, 0, 0, 0.14154758, -0.010142446, -0.0061224103, 2.575573e-07)
+shape = SubResource("CapsuleShape3D_vcuup")
+
+[node name="Top" type="CollisionShape3D" parent="RigidBody3D" unique_id=606678908]
+transform = Transform3D(0.14154758, 0, 0, 0, 0.14154758, 0, 0, 0, 0.14154758, -0.010142446, 1.220855, 2.575573e-07)
+shape = SubResource("CapsuleShape3D_vcuup")

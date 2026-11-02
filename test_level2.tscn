@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://c0i7wdyx2vuuv"]
+
+[ext_resource type="PackedScene" uid="uid://c2f7or57sbcfm" path="res://player/player.tscn" id="1_nancv"]
+[ext_resource type="PackedScene" uid="uid://comx0lat5kkya" path="res://stuff/pin.tscn" id="2_2sov6"]
+[ext_resource type="Texture2D" uid="uid://dn8rpk682waug" path="res://art/kenney_prototype-textures/PNG/Dark/texture_03.png" id="3_hvr57"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfvsu"]
+albedo_texture = ExtResource("3_hvr57")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h1mgw"]
+
+[sub_resource type="Sky" id="Sky_buci3"]
+sky_material = SubResource("ProceduralSkyMaterial_h1mgw")
+
+[sub_resource type="Environment" id="Environment_rm8kn"]
+background_mode = 2
+sky = SubResource("Sky_buci3")
+
+[node name="TestLevel2" type="Node3D" unique_id=1413574459]
+
+[node name="Player" parent="." unique_id=1318668209 instance=ExtResource("1_nancv")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1420613059]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9558382)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D" unique_id=1184518118]
+transform = Transform3D(1, 0, 0, 0, 0.79392874, 0.60801077, 0, -0.60801077, 0.79392874, 0, 1.2064701, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1363384408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.14182, -1.1884861, 0.2622223)
+use_collision = true
+size = Vector3(32.743042, 1, 50.807037)
+
+[node name="Pin" parent="." unique_id=1818254479 instance=ExtResource("2_2sov6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31750405, -10.543032)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1181261247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 38.331787, 0)
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=86584594]
+transform = Transform3D(0.38268346, 2.6983763e-08, 0.9238795, 0.9238795, -4.0384055e-08, -0.38268346, 2.6983763e-08, 1, -4.0384055e-08, 0, 0, 0)
+radius = 50.0
+height = 50.0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D" unique_id=521280730]
+operation = 2
+radius = 40.0
+height = 50.0
+sides = 24
+material = SubResource("StandardMaterial3D_mfvsu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1701040696]
+environment = SubResource("Environment_rm8kn")
